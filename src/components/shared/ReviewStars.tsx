@@ -62,7 +62,7 @@ export const ReviewStars: React.FunctionComponent<Props> = ({
         src={findReviewStarImgUrl(reviewRating)}
         alt={`${reviewRating} stars`}
       />
-      <CaptionText>{reviewCount}</CaptionText>
+      {reviewCount && <CaptionText>{reviewCount} reviews</CaptionText>}
     </ReviewStarsContainer>
   );
 };

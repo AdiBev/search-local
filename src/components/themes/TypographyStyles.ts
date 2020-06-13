@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colorPrimary } from "../BaseStyles";
+import { colorPrimary, colorPrimaryDark } from "../BaseStyles";
 
 interface HeaderTextLgProps {
   primary?: boolean;
@@ -60,4 +60,14 @@ export const CaptionText = styled.span`
   font-weight: 300;
   line-height: 17px;
   color: #3e4868e5;
+`;
+
+export const LinkText = styled.a`
+  text-decoration: none;
+  color: ${colorPrimary};
+
+  &:hover {
+    color: ${colorPrimaryDark};
+    cursor: pointer;
+  }
 `;

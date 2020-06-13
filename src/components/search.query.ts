@@ -23,8 +23,11 @@ export const SEARCH_DATA_FRAGMENT = gql`
       photos
       reviews {
         rating
+        time_created
+        url
         user {
           name
+          image_url
         }
         text
       }

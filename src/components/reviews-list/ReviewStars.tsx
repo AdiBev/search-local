@@ -14,7 +14,7 @@ import five from "../../assets/yelp_stars/five.png";
 
 interface Props {
   reviewRating: number;
-  reviewCount: number;
+  reviewCount?: number;
 }
 
 const ReviewStarsContainer = styled.div`

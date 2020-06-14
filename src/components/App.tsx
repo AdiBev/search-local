@@ -21,8 +21,9 @@ const AppContainer = styled.div<AppContainerProps>`
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 7rem;
-    right: 2rem;
+    top: 100px;
+    right: 20px;
+    z-index: 2000;
 
     &:hover {
       cursor: pointer;
@@ -34,10 +35,11 @@ const AppContainer = styled.div<AppContainerProps>`
   }
 
   .map-app-container {
+    padding-top: 70px;
     .map-wrapper {
       display: ${(props) => (props.displayMap ? `block` : "none")};
       width: 100vw;
-      height: 80vh;
+      height: calc(100vh - 70px);
     }
   }
 `;

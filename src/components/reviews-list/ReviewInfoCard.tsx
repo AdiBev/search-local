@@ -12,8 +12,15 @@ import { Review } from "../../generated/graphql";
 
 const ReviewInfoCardWrapper = styled.div`
   display: grid;
-  grid-template-columns: 100px 1fr;
-  grid-column-gap: 20px;
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: unset;
+    grid-column-gap: 20px;
+    grid-row-gap: 0;
+  }
 
   .user-info-container {
     img {

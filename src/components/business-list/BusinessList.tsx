@@ -9,10 +9,14 @@ import { MapContainer } from "../map/MapContainer";
 const ListWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding-top: 120px;
+  padding-top: 150px;
 
   @media (min-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1150px) {
+    padding-top: 100px;
   }
 `;
 

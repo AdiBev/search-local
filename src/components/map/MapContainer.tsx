@@ -49,9 +49,12 @@ export const MapContainer = () => {
           data?.business?.map((business) => (
             <MapMarker
               coordinates={business?.coordinates!}
-              businessName={business?.name!}
+              business={{ name: business?.name!, url: business?.url! }}
               address={business?.location?.address1!}
-              id={business?.id!}
+              review={{
+                rating: business?.rating!,
+                total: business?.review_count!,
+              }}
               key={business?.id!}
             />
           ))}

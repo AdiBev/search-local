@@ -6,8 +6,9 @@ import styled from "styled-components";
 import mapOpen from "../assets/map-open.svg";
 import mapClose from "../assets/map-close.svg";
 import { MapContainer } from "./map/MapContainer";
-import { searchDataState } from "../state/app.state";
+import { searchDataState, apiStatusState } from "../state/app.state";
 import { useRecoilValue } from "recoil";
+import { Home } from "./Home";
 
 interface AppContainerProps {
   displayMap: boolean;
@@ -48,14 +49,18 @@ function App() {
   const [openMap, setOpenMap] = useState(false);
 
   const data = useRecoilValue(searchDataState);
+  const apiStatus = useRecoilValue(apiStatusState);
 
   const mapImgSrc = openMap ? mapClose : mapOpen;
+
+  const dataLoaded = data ? true : false;
+  const noResults = data?.business?.length === 0 ? true : false;
 
   return (
     <AppContainer displayMap={openMap}>
       <BaseStyles />
       <Navbar />
-      {data && (
+      {dataLoaded && !noResults && (
         <img
           src={mapImgSrc}
           alt="map"
@@ -67,11 +72,20 @@ function App() {
         <div className="map-app-container">
           <MapContainer />
         </div>
-      ) : (
+      ) : dataLoaded && !noResults ? (
         <BusinessList />
-      )}
+      ) : null}
+
+      <Home
+        dataLoaded={dataLoaded}
+        noResults={noResults}
+        apiStatus={apiStatus}
+      />
     </AppContainer>
   );
 }
 
 export default App;
+
+///atrr
+///local business <a href='https://www.freepik.com/free-photos-vectors/business'>Business vector created by freepik - www.freepik.com</a>

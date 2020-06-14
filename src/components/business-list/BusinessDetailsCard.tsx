@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { inputBorder, colorPrimary, colorPrimaryDark } from "../BaseStyles";
 import {
@@ -9,8 +9,10 @@ import {
   LinkText,
 } from "../themes/TypographyStyles";
 import { Business } from "../../generated/graphql";
-import { ReviewStars } from "../shared/ReviewStars";
+import { ReviewStars } from "../reviews-list/ReviewStars";
 import business from "../../assets/business.svg";
+import { ReviewList } from "../reviews-list/ReviewList";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 interface Props {
   businessDetails: Business;
@@ -89,11 +91,20 @@ const DetailsCardContent = styled.div`
 export const BusinessDetailsCard: React.FunctionComponent<Props> = ({
   businessDetails,
 }) => {
+  const [openReviews, setOpenReviews] = useState(false);
+
   const location = businessDetails.location;
   const reviewText = businessDetails?.reviews?.[0]?.text;
   const imgUrl = businessDetails.photos?.[0]
     ? businessDetails.photos?.[0]
     : business;
+
+  const reviewModal = useRef<HTMLDivElement>(null);
+
+  //handle clicks outside modal
+  useOnclickOutside(reviewModal, () => {
+    setOpenReviews(false);
+  });
 
   return (
     <DetailsCardContainer>
@@ -108,13 +119,17 @@ export const BusinessDetailsCard: React.FunctionComponent<Props> = ({
             {businessDetails?.name}
           </LinkText>
         </HeaderTextSmall>
-        {/* <img src={stars} alt="stars" /> */}
         <ReviewStars
           reviewRating={businessDetails?.rating!}
           reviewCount={businessDetails?.review_count!}
         />
         <BodySubText className="review">{reviewText}</BodySubText>
-        <BodyText className="read-more">Read more reviews</BodyText>
+        <BodyText
+          className="read-more"
+          onClick={() => setOpenReviews((s) => !s)}
+        >
+          Read more reviews
+        </BodyText>
       </DetailsCardContent>
       <DetailsCardContent className="contact-details">
         <CaptionText>{businessDetails.phone}</CaptionText>
@@ -124,6 +139,14 @@ export const BusinessDetailsCard: React.FunctionComponent<Props> = ({
         </CaptionText>
         <CaptionText>{location?.country}</CaptionText>
       </DetailsCardContent>
+      {openReviews && (
+        <ReviewList
+          reviewList={businessDetails.reviews!}
+          name={businessDetails.name!}
+          ref={reviewModal}
+          reviewsUrl={businessDetails.url!}
+        />
+      )}
     </DetailsCardContainer>
   );
 };

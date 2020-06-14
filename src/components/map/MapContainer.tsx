@@ -35,7 +35,7 @@ export const MapContainer = () => {
   }, [data]);
 
   return (
-    <MapWrapper>
+    <MapWrapper className="map-wrapper">
       <Map
         center={coordinates}
         zoom={13}
@@ -59,5 +59,3 @@ export const MapContainer = () => {
     </MapWrapper>
   );
 };
-
-////dark map https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png

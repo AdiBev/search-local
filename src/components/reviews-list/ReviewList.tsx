@@ -1,7 +1,7 @@
 import React, { Ref } from "react";
 import styled from "styled-components";
 import { ReviewInfoCard } from "./ReviewInfoCard";
-import { HeaderTextLg, LinkText } from "../themes/TypographyStyles";
+import { LinkText, HeaderTextSmall } from "../themes/TypographyStyles";
 import { Review, Maybe } from "../../generated/graphql";
 import { Button } from "../shared/Button";
 import { motion } from "framer-motion";
@@ -89,7 +89,7 @@ export const ReviewList = React.forwardRef(
               damping: 20,
             }}
           >
-            <HeaderTextLg primary>{name}</HeaderTextLg>
+            <HeaderTextSmall>{name}</HeaderTextSmall>
 
             {reviewList.map((review, i) => (
               <ReviewInfoCard review={review as Review} key={i} />

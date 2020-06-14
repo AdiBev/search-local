@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import user from "../../assets/user.svg";
-import {
-  HeaderTextSmall,
-  BodyText,
-  LinkText,
-} from "../themes/TypographyStyles";
+import { BodySubText, BodyText, LinkText } from "../themes/TypographyStyles";
 import { ReviewStars } from "./ReviewStars";
 import { colorPrimaryDark } from "../BaseStyles";
 import { Review } from "../../generated/graphql";
@@ -66,9 +62,7 @@ export const ReviewInfoCard: React.FunctionComponent<Props> = ({ review }) => {
     <ReviewInfoCardWrapper>
       <div className="user-info-container">
         <img src={avatarUrl} alt="User avatar" />
-        <HeaderTextSmall className="user-name">
-          {review.user?.name!}
-        </HeaderTextSmall>
+        <BodySubText className="user-name">{review.user?.name!}</BodySubText>
       </div>
       <div className="info-container">
         <ReviewStars reviewRating={review.rating!} />

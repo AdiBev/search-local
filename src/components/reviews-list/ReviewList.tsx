@@ -14,7 +14,7 @@ const BackgroundOverlay = styled.div`
   height: 100vh;
   background: black;
   opacity: 0.5;
-  z-index: 900;
+  z-index: 9999;
 `;
 
 const MainWrapper = styled.div`
@@ -27,6 +27,7 @@ const MainWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10000;
 `;
 
 const ReviewListWrapper = styled(motion.div)`
@@ -34,11 +35,10 @@ const ReviewListWrapper = styled(motion.div)`
   grid-template-rows: auto;
   grid-row-gap: 30px;
   width: 90%;
-  height: 300px;
+  height: 400px;
   background: white;
   padding: 30px 10px;
   border-radius: 6px;
-  z-index: 1000;
   overflow-y: scroll;
 
   button {
@@ -52,13 +52,18 @@ const ReviewListWrapper = styled(motion.div)`
   }
 
   @media (min-width: 800px) {
-    max-width: 500px;
+    max-width: 600px;
     padding: 30px;
     width: 100%;
     height: auto;
     padding: 30px;
     border-radius: 6px;
     overflow: unset;
+  }
+
+  @media (min-width: 1000px) and (max-height: 800px) {
+    height: 500px;
+    overflow-y: scroll;
   }
 `;
 

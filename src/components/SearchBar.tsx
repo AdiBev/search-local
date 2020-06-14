@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Input } from "./shared/Input";
 import { Button } from "./shared/Button";
 import { useRecoilState } from "recoil";
-import { searchDataState } from "../state/app.state";
+import { searchDataState, apiStatusState } from "../state/app.state";
 
 const FormContainer = styled.form`
   display: grid;
@@ -28,6 +28,7 @@ const FormContainer = styled.form`
 
 export const SearchBar: React.FunctionComponent = () => {
   const [searchData, setSearchData] = useRecoilState(searchDataState);
+  const [apiStatus, setApiStatus] = useRecoilState(apiStatusState);
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
 
@@ -38,9 +39,15 @@ export const SearchBar: React.FunctionComponent = () => {
 
     if (offset) {
       const res = await fetch(dataUrl);
+      setApiStatus({ error: false, loading: true });
       const data = await res.json();
       const json = await data;
+      setApiStatus({ ...apiStatus, loading: false });
       setSearchData(json?.search);
+
+      if (json?.response?.errors) {
+        setApiStatus({ ...apiStatus, error: true });
+      }
     }
   };
 

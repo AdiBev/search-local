@@ -71,7 +71,7 @@ export const Navbar: React.FunctionComponent = () => {
 
   return (
     <NavbarContainer>
-      <HeaderTextSmall>Bad Doctor</HeaderTextSmall>
+      <HeaderTextSmall>Search Local</HeaderTextSmall>
       <SearchBar />
       <img
         src={search}

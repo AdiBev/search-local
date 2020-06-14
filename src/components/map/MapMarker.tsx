@@ -3,7 +3,13 @@ import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import marker from "../../assets/map-marker.png";
 import { Coordinates } from "../../generated/graphql";
-import { HeaderTextSmall, CaptionText } from "../themes/TypographyStyles";
+import {
+  HeaderTextSmall,
+  CaptionText,
+  LinkText,
+} from "../themes/TypographyStyles";
+import styled from "styled-components";
+import { ReviewStars } from "../reviews-list/ReviewStars";
 
 const iconMarker = L.icon({
   iconUrl: marker,
@@ -13,24 +19,48 @@ const iconMarker = L.icon({
 
 interface Props {
   coordinates: Coordinates;
-  businessName: string;
+  business: { name: string; url: string };
   address: string;
-  id: string;
+  review: { rating: number; total: number };
 }
+
+const PopupContainer = styled.div`
+  display: grid;
+  grid-template-rows: repeat(3, max-content);
+  grid-row-gap: 10px;
+
+  img {
+    width: 100px;
+    height: 20px;
+  }
+`;
 
 export const MapMarker: React.FunctionComponent<Props> = ({
   coordinates,
-  businessName,
+  business,
   address,
-  id,
+  review,
 }) => {
   const position = { lat: coordinates.latitude!, lng: coordinates.longitude! };
   return (
     <Marker position={position} icon={iconMarker}>
       <Popup>
-        <HeaderTextSmall>{businessName}</HeaderTextSmall>
-        <br />
-        <CaptionText>{address}</CaptionText>
+        <PopupContainer>
+          <HeaderTextSmall>
+            <LinkText
+              href={business.url}
+              target="_blank"
+              rel="nofollow noopener"
+            >
+              {business.name}
+            </LinkText>
+          </HeaderTextSmall>
+          <ReviewStars
+            reviewRating={review.rating}
+            reviewCount={review.total}
+          />
+          <CaptionText>{address}</CaptionText>
+        </PopupContainer>
       </Popup>
     </Marker>
   );

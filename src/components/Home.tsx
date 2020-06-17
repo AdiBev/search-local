@@ -40,7 +40,7 @@ export const Home: React.FunctionComponent<Props> = ({
 
   return (
     <HomeContainer>
-      {!dataLoaded && !error && (
+      {!dataLoaded && !error && !loading && (
         <img src={searchLocal} alt="Man with dog searching." />
       )}
 

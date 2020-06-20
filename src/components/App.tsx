@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BaseStyles } from "./themes/BaseStyles";
 import { Navbar } from "./Navbar";
 import { BusinessList } from "./business-list/BusinessList";
@@ -55,6 +55,13 @@ function App() {
 
   const dataLoaded = data ? true : false;
   const noResults = data?.business?.length === 0 ? true : false;
+
+  //Hide map if open when there is no results
+  useEffect(() => {
+    if (noResults) {
+      setOpenMap(false);
+    }
+  }, [noResults]);
 
   return (
     <AppContainer displayMap={openMap}>

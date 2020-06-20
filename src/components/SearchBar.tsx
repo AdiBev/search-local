@@ -33,21 +33,20 @@ export const SearchBar: React.FunctionComponent = () => {
   const [location, setLocation] = useState("");
 
   const fetchBusinessDetails = async () => {
-    const offset = 20;
+    const offset = 0;
+    const limit = 20;
 
-    const dataUrl = `https://garnet-gilded-phosphorus.glitch.me/graphql?location=${location}&term=${searchTerm}&limit=2&offset=${offset}`;
+    const dataUrl = `https://garnet-gilded-phosphorus.glitch.me/graphql?location=${location}&term=${searchTerm}&limit=${limit}&offset=${offset}`;
 
-    if (offset) {
-      const res = await fetch(dataUrl);
-      setApiStatus({ error: false, loading: true });
-      const data = await res.json();
-      const json = await data;
-      setApiStatus({ ...apiStatus, loading: false });
-      setSearchData(json?.search);
+    setApiStatus({ error: false, loading: true });
+    const res = await fetch(dataUrl);
+    const data = await res.json();
+    const json = await data;
+    setApiStatus({ ...apiStatus, loading: false });
+    setSearchData(json?.search);
 
-      if (json?.response?.errors) {
-        setApiStatus({ ...apiStatus, error: true });
-      }
+    if (json?.response?.errors) {
+      setApiStatus({ ...apiStatus, error: true });
     }
   };
 
@@ -68,7 +67,7 @@ export const SearchBar: React.FunctionComponent = () => {
     <FormContainer onSubmit={(e) => handleSubmit(e)} className="form-container">
       <Input
         required
-        placeholder="Restauarants, Shopping etc"
+        placeholder="restaurants, Bars etc"
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -81,7 +80,7 @@ export const SearchBar: React.FunctionComponent = () => {
         onChange={(e) => setLocation(e.target.value)}
       />
       <Button
-        whileHover={{ scale: 1.1, transition: { duration: 1 } }}
+        whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
         whileTap={{ scale: 0.9 }}
       >
         Search

@@ -86,6 +86,3 @@ function App() {
 }
 
 export default App;
-
-///atrr
-///local business <a href='https://www.freepik.com/free-photos-vectors/business'>Business vector created by freepik - www.freepik.com</a>

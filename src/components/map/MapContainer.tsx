@@ -9,6 +9,10 @@ import { MapMarker } from "./MapMarker";
 const MapWrapper = styled.div`
   display: none;
 
+  .leaflet-control-container {
+    display: none;
+  }
+
   @media (min-width: 1150px) {
     display: block;
     width: 50%;
@@ -19,7 +23,7 @@ const MapWrapper = styled.div`
   }
 `;
 
-export const MapContainer = () => {
+export const MapContainer: React.FunctionComponent = () => {
   const data = useRecoilValue(searchDataState);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 

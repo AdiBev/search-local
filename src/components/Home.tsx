@@ -46,9 +46,9 @@ export const Home: React.FunctionComponent<Props> = ({
 
       {loading && <img src={loadingApi} alt="API loading." />}
 
-      {noResults && <img src={empty} alt="No results." />}
+      {noResults && !loading && <img src={empty} alt="No results." />}
 
-      {error && <img src={errorApi} alt="No results." />}
+      {error && !loading && <img src={errorApi} alt="No results." />}
     </HomeContainer>
   );
 };

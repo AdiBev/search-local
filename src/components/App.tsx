@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BaseStyles } from "./BaseStyles";
+import { BaseStyles } from "./themes/BaseStyles";
 import { Navbar } from "./Navbar";
 import { BusinessList } from "./business-list/BusinessList";
 import styled from "styled-components";

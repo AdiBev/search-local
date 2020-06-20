@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colorPrimary, colorPrimaryDark } from "../BaseStyles";
+import { colorPrimary, colorPrimaryDark } from "./BaseStyles";
 
 interface HeaderTextLgProps {
   primary?: boolean;

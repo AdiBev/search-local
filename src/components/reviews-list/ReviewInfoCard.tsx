@@ -3,7 +3,7 @@ import styled from "styled-components";
 import user from "../../assets/user.svg";
 import { BodySubText, BodyText, LinkText } from "../themes/TypographyStyles";
 import { ReviewStars } from "./ReviewStars";
-import { colorPrimaryDark } from "../BaseStyles";
+import { colorPrimaryDark } from "../themes/BaseStyles";
 import { Review } from "../../generated/graphql";
 
 const ReviewInfoCardWrapper = styled.div`

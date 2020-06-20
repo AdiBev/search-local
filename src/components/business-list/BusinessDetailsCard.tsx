@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { inputBorder, colorPrimary, colorPrimaryDark } from "../BaseStyles";
+import {
+  inputBorder,
+  colorPrimary,
+  colorPrimaryDark,
+} from "../themes/BaseStyles";
 import {
   BodySubText,
   HeaderTextSmall,

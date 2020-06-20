@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { inputFocusBorder, inputBorder, colorPrimary } from "../BaseStyles";
+import {
+  inputFocusBorder,
+  inputBorder,
+  colorPrimary,
+} from "../themes/BaseStyles";
 import { motion } from "framer-motion";
 
 export const Input = styled(motion.input)`

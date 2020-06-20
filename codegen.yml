@@ -2,7 +2,7 @@ overwrite: true
 schema:
   - "https://api.yelp.com/v3/graphql":
       headers:
-        Authorization: "Bearer rwHmIJ9ipaXySeJ_FpnX9dNMRev40UvFDiGCbq951Vl2lY1Me4ZJU5nWD5peGUxADYzpI0OEes12ZJkWS4hngZhutf45XSXXk2HxF6bwQ9KeUOFKmOCrUapyF4vbXnYx"
+        Authorization: "Bearer FAKE_TOKEN"
 documents: "src/**/*.ts"
 generates:
   src/generated/graphql.tsx:

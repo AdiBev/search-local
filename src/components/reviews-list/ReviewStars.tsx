@@ -11,6 +11,7 @@ import threeandhalf from "../../assets/yelp_assets/threeandhalf.png";
 import four from "../../assets/yelp_assets/four.png";
 import fourandhalf from "../../assets/yelp_assets/fourandhalf.png";
 import five from "../../assets/yelp_assets/five.png";
+import yelpLogo from "../../assets/yelp_assets/yelp-logo.png";
 
 interface Props {
   reviewRating: number;
@@ -22,8 +23,15 @@ const ReviewStarsContainer = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: repeat(2, max-content);
-  grid-column-gap: 10px;
+  grid-template-rows: repeat(2, max-content);
+  grid-gap: 10px;
   align-items: center;
+
+  .yelp-logo {
+    grid-column: 2 / 3;
+    width: 50px;
+    height: 25px;
+  }
 `;
 
 export const ReviewStars: React.FunctionComponent<Props> = ({
@@ -62,6 +70,7 @@ export const ReviewStars: React.FunctionComponent<Props> = ({
         src={findReviewStarImgUrl(reviewRating)}
         alt={`${reviewRating} stars`}
       />
+      <img src={yelpLogo} alt="Yelp" className="yelp-logo" />
       {reviewCount && <CaptionText>{reviewCount} reviews</CaptionText>}
     </ReviewStarsContainer>
   );

@@ -41,14 +41,16 @@ const ReviewListWrapper = styled(motion.div)`
   border-radius: 6px;
   overflow-y: scroll;
 
-  button {
-    margin-bottom: 10px;
-  }
-
   .want-more {
     color: white;
     font-size: 16px;
     font-weight: 700;
+    margin-bottom: 10px;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
   }
 
   @media (min-width: 800px) {
@@ -95,19 +97,19 @@ export const ReviewList = React.forwardRef(
               <ReviewInfoCard review={review as Review} key={i} />
             ))}
 
-            <Button
-              whileHover={{ scale: 1.1, transition: { duration: 1 } }}
-              whileTap={{ scale: 0.9 }}
+            <LinkText
+              href={reviewsUrl}
+              target="_blank"
+              rel="noopener nofollow"
+              className="want-more"
             >
-              <LinkText
-                href={reviewsUrl}
-                target="_blank"
-                rel="noopener nofollow"
-                className="want-more"
+              <Button
+                whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
+                whileTap={{ scale: 0.9 }}
               >
                 Want more ?
-              </LinkText>
-            </Button>
+              </Button>
+            </LinkText>
           </ReviewListWrapper>
         </MainWrapper>
       </>

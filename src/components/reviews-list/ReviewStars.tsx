@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { CaptionText } from "../themes/TypographyStyles";
-import zero from "../../assets/yelp_stars/zero.png";
-import one from "../../assets/yelp_stars/one.png";
-import oneandhalf from "../../assets/yelp_stars/oneandhalf.png";
-import two from "../../assets/yelp_stars/two.png";
-import twoandhalf from "../../assets/yelp_stars/twoandhalf.png";
-import three from "../../assets/yelp_stars/three.png";
-import threeandhalf from "../../assets/yelp_stars/threeandhalf.png";
-import four from "../../assets/yelp_stars/four.png";
-import fourandhalf from "../../assets/yelp_stars/fourandhalf.png";
-import five from "../../assets/yelp_stars/five.png";
+import zero from "../../assets/yelp_assets/zero.png";
+import one from "../../assets/yelp_assets/one.png";
+import oneandhalf from "../../assets/yelp_assets/oneandhalf.png";
+import two from "../../assets/yelp_assets/two.png";
+import twoandhalf from "../../assets/yelp_assets/twoandhalf.png";
+import three from "../../assets/yelp_assets/three.png";
+import threeandhalf from "../../assets/yelp_assets/threeandhalf.png";
+import four from "../../assets/yelp_assets/four.png";
+import fourandhalf from "../../assets/yelp_assets/fourandhalf.png";
+import five from "../../assets/yelp_assets/five.png";
 
 interface Props {
   reviewRating: number;

@@ -40,6 +40,8 @@ const ReviewInfoCardWrapper = styled.div`
     }
 
     .read-more {
+      display: inline-block;
+      font-size: 16px;
       &:hover {
         cursor: pointer;
         color: ${colorPrimaryDark};
@@ -69,15 +71,9 @@ export const ReviewInfoCard: React.FunctionComponent<Props> = ({ review }) => {
         <BodyText>
           {review.text!}
           {inCompleteReviewDisplayed && (
-            <span className="read-more">
-              <LinkText
-                href={review.url!}
-                target="_blank"
-                rel="nopener nofollow"
-              >
-                Read more
-              </LinkText>
-            </span>
+            <LinkText href={review.url!} target="_blank" rel="nopener nofollow">
+              <BodyText className="read-more">Read more on yelp</BodyText>
+            </LinkText>
           )}
         </BodyText>
       </div>

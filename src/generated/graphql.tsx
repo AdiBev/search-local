@@ -1,10 +1,5 @@
 import gql from 'graphql-tag';
-import * as React from 'react';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as ApolloReactComponents from '@apollo/react-components';
-import * as ApolloReactHoc from '@apollo/react-hoc';
 export type Maybe<T> = T | null;
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -465,45 +460,69 @@ export type Categories = {
   total?: Maybe<Scalars['Int']>;
 };
 
-export type SearchPlacesQueryVariables = {
-  term?: Maybe<Scalars['String']>;
-  location?: Maybe<Scalars['String']>;
-};
-
-
-export type SearchPlacesQuery = (
-  { __typename?: 'Query' }
-  & { search?: Maybe<(
-    { __typename?: 'Businesses' }
-    & Pick<Businesses, 'total'>
-  )> }
+export type SearchDataFragment = (
+  { __typename?: 'Businesses' }
+  & { business?: Maybe<Array<Maybe<(
+    { __typename?: 'Business' }
+    & Pick<Business, 'name' | 'phone' | 'id' | 'price' | 'rating' | 'review_count' | 'url' | 'photos'>
+    & { coordinates?: Maybe<(
+      { __typename?: 'Coordinates' }
+      & Pick<Coordinates, 'latitude' | 'longitude'>
+    )>, location?: Maybe<(
+      { __typename?: 'Location' }
+      & Pick<Location, 'address1' | 'city' | 'postal_code' | 'country'>
+    )>, reviews?: Maybe<Array<Maybe<(
+      { __typename?: 'Review' }
+      & Pick<Review, 'rating' | 'time_created' | 'url' | 'text'>
+      & { user?: Maybe<(
+        { __typename?: 'User' }
+        & Pick<User, 'name' | 'image_url'>
+      )> }
+    )>>> }
+  )>>> }
 );
 
+export type SearchTotalFragment = (
+  { __typename?: 'Businesses' }
+  & Pick<Businesses, 'total'>
+);
 
-export const SearchPlacesDocument = gql`
-    query SearchPlaces($term: String, $location: String) {
-  search(term: $term, location: $location) {
-    total
+export const SearchDataFragmentDoc = gql`
+    fragment SearchData on Businesses {
+  business {
+    name
+    phone
+    id
+    price
+    coordinates {
+      latitude
+      longitude
+    }
+    location {
+      address1
+      city
+      postal_code
+      country
+    }
+    rating
+    review_count
+    url
+    photos
+    reviews {
+      rating
+      time_created
+      url
+      user {
+        name
+        image_url
+      }
+      text
+    }
   }
 }
     `;
-export type SearchPlacesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SearchPlacesQuery, SearchPlacesQueryVariables>, 'query'>;
-
-    export const SearchPlacesComponent = (props: SearchPlacesComponentProps) => (
-      <ApolloReactComponents.Query<SearchPlacesQuery, SearchPlacesQueryVariables> query={SearchPlacesDocument} {...props} />
-    );
-    
-export type SearchPlacesProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SearchPlacesQuery, SearchPlacesQueryVariables>
-    } & TChildProps;
-export function withSearchPlaces<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SearchPlacesQuery,
-  SearchPlacesQueryVariables,
-  SearchPlacesProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SearchPlacesQuery, SearchPlacesQueryVariables, SearchPlacesProps<TChildProps, TDataName>>(SearchPlacesDocument, {
-      alias: 'searchPlaces',
-      ...operationOptions
-    });
-};
-export type SearchPlacesQueryResult = ApolloReactCommon.QueryResult<SearchPlacesQuery, SearchPlacesQueryVariables>;
+export const SearchTotalFragmentDoc = gql`
+    fragment SearchTotal on Businesses {
+  total
+}
+    `;

@@ -75,7 +75,7 @@ export const SearchBar: React.FunctionComponent = () => {
       <Input
         required
         type="text"
-        placeholder="London, England"
+        placeholder="Place name or postcode"
         value={location}
         onChange={(e) => setLocation(e.target.value)}
       />

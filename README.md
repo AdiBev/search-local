@@ -7,3 +7,5 @@ It also provides interactive leaflet map to search businesses.
 ## To run the app `npm start`
 ## To build the app `npm run build`
 
+## Tests 
+Unit tests are done using jest and react testing library.

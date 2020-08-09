@@ -14,7 +14,7 @@ import {
 } from "../themes/TypographyStyles";
 import { Business } from "../../generated/graphql";
 import { ReviewStars } from "../reviews-list/ReviewStars";
-import business from "../../assets/business.svg";
+import businessImg from "../../assets/business.svg";
 import { ReviewList } from "../reviews-list/ReviewList";
 import useOnclickOutside from "react-cool-onclickoutside";
 
@@ -101,7 +101,7 @@ export const BusinessDetailsCard: React.FunctionComponent<Props> = ({
   const reviewText = businessDetails?.reviews?.[0]?.text;
   const imgUrl = businessDetails.photos?.[0]
     ? businessDetails.photos?.[0]
-    : business;
+    : businessImg;
 
   const reviewModal = useRef<HTMLDivElement>(null);
 

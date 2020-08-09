@@ -34,6 +34,10 @@ const ReviewInfoCardWrapper = styled.div`
     grid-template-rows: repeat(2, max-content);
     grid-row-gap: 10px;
 
+    a {
+      display: inline-block;
+    }
+
     img {
       height: 25px;
       align-self: start;
@@ -68,14 +72,12 @@ export const ReviewInfoCard: React.FunctionComponent<Props> = ({ review }) => {
       </div>
       <div className="info-container">
         <ReviewStars reviewRating={review.rating!} />
-        <BodyText>
-          {review.text!}
-          {inCompleteReviewDisplayed && (
-            <LinkText href={review.url!} target="_blank" rel="nopener nofollow">
-              <BodyText className="read-more">Read more on yelp</BodyText>
-            </LinkText>
-          )}
-        </BodyText>
+        <BodyText>{review.text!}</BodyText>
+        {inCompleteReviewDisplayed && (
+          <LinkText href={review.url!} target="_blank" rel="nopener nofollow">
+            <BodyText className="read-more">Read more on yelp</BodyText>
+          </LinkText>
+        )}
       </div>
     </ReviewInfoCardWrapper>
   );

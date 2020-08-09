@@ -1,9 +1,13 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./components/App";
+import { RecoilRoot } from "recoil";
 
-test("renders learn react link", () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders App component", () => {
+  render(
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+  expect(screen).toBeTruthy();
 });

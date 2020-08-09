@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Input } from "./shared/Input";
-import { Button } from "./shared/Button";
+import { Input } from "../shared/Input";
+import { Button } from "../shared/Button";
 import { useRecoilState } from "recoil";
-import { searchDataState, apiStatusState } from "../state/app.state";
+import { searchDataState, apiStatusState } from "../../state/app.state";
 
 const FormContainer = styled.form`
   display: grid;

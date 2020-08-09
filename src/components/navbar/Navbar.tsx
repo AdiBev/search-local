@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { HeaderTextSmall } from "./themes/TypographyStyles";
+import { HeaderTextSmall } from "../themes/TypographyStyles";
 import { SearchBar } from "./SearchBar";
-import search from "../assets/search.svg";
+import search from "../../assets/search.svg";
 import useOnclickOutside from "react-cool-onclickoutside";
 
 const NavbarContainer = styled.div`

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BaseStyles } from "./themes/BaseStyles";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./navbar/Navbar";
 import { BusinessList } from "./business-list/BusinessList";
 import styled from "styled-components";
 import mapOpen from "../assets/map-open.svg";

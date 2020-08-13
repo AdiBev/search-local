@@ -10,4 +10,6 @@ It also provides interactive leaflet map to search businesses.
 ## To build the app `npm run build`
 
 ## Tests 
+### To test `npm run test`
+### For test coverage `npm run test:coverage`
 Unit tests are done using jest and react testing library.

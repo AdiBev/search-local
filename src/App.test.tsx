@@ -9,5 +9,4 @@ test("renders App component", () => {
       <App />
     </RecoilRoot>
   );
-  expect(screen).toBeTruthy();
 });

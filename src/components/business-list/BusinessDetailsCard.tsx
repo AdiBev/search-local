@@ -132,7 +132,7 @@ export const BusinessDetailsCard: React.FunctionComponent<Props> = ({
           className="read-more"
           onClick={() => setOpenReviews((s) => !s)}
         >
-          Read more 
+          Read more reviews
         </BodyText>
       </DetailsCardContent>
       <DetailsCardContent className="contact-details">

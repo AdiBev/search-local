@@ -41,27 +41,34 @@ export const MapMarker: React.FunctionComponent<Props> = ({
   address,
   review,
 }) => {
-  const position = { lat: coordinates.latitude!, lng: coordinates.longitude! };
+  const position = {
+    lat: coordinates?.latitude!,
+    lng: coordinates?.longitude!,
+  };
   return (
-    <Marker position={position} icon={iconMarker}>
-      <Popup>
-        <PopupContainer>
-          <HeaderTextSmall>
-            <LinkText
-              href={business.url}
-              target="_blank"
-              rel="nofollow noopener"
-            >
-              {business.name}
-            </LinkText>
-          </HeaderTextSmall>
-          <ReviewStars
-            reviewRating={review.rating}
-            reviewCount={review.total}
-          />
-          <CaptionText>{address}</CaptionText>
-        </PopupContainer>
-      </Popup>
-    </Marker>
+    <>
+      {coordinates?.latitude && coordinates?.longitude && (
+        <Marker position={position} icon={iconMarker}>
+          <Popup>
+            <PopupContainer>
+              <HeaderTextSmall>
+                <LinkText
+                  href={business.url}
+                  target="_blank"
+                  rel="nofollow noopener"
+                >
+                  {business.name}
+                </LinkText>
+              </HeaderTextSmall>
+              <ReviewStars
+                reviewRating={review.rating}
+                reviewCount={review.total}
+              />
+              <CaptionText>{address}</CaptionText>
+            </PopupContainer>
+          </Popup>
+        </Marker>
+      )}
+    </>
   );
 };

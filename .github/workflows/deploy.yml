@@ -33,7 +33,7 @@ jobs:
         run: npm test
 
       - name: Make build
-        run: npm run buid
+        run: npm run build
 
       - uses: w9jds/firebase-action@master
         with:

@@ -23,7 +23,7 @@
     "react-cool-onclickoutside": "^1.4.8",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "recoil": "0.0.8",
     "styled-components": "^5.1.1",
     "styled-reset": "^4.1.5",
